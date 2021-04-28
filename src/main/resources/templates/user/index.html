@@ -1,28 +1,49 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{page_layouts/_layout}">
     <head>
     <title>TODO supply a title</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <table style="width:100%">
-        <thead>
-            <tr>
-                <th>Adı</th>
-                <th>Soyadı</th> 
-                <th>Kullanıcı Adı</th>
-                <th>Durumu</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="user : ${listUsers}">
-                <td th:text="${user.firstName}"></td>
-                <td th:text="${user.lastName}"></td>
-                <td th:text="${user.userName}"></td>
-                <td th:text="${user.state}"></td>
-            </tr>
-        </tbody>
-    </table>
+<div layout:fragment="content">
+<div class="col-md-12 col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <h5 class="card-title">Recent Invoices</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table table-stripped table-hover">
+                    <thead class="thead-light">
+                    <tr>
+                        <th>Adı</th>
+                        <th>Soyadı</th>
+                        <th>Kullanıcı Adı</th>
+                        <th>Durum</th>
+                        <th class="text-right">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="user : ${listUsers}">
+                        <td th:text="${user.firstName}"></td>
+                        <td th:text="${user.lastName}"></td>
+                        <td th:text="${user.userName}"></td>
+                        <td th:text="${user.state}"></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
 </body>
 </html>
