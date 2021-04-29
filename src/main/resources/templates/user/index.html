@@ -8,37 +8,47 @@
 <body>
 <div layout:fragment="content">
 <div class="col-md-12 col-sm-12">
-    <div class="card">
-        <div class="card-header">
-            <div class="row">
-                <div class="col">
-                    <h5 class="card-title">Recent Invoices</h5>
-                </div>
+    <div class="col-xl-12 col-md-12">
+
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Profil
+                    <a th:href="@{/user/edit}" class="btn btn-success text-right"> Düzenle </a>
+                </h5>
             </div>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
+            <div class="card-body">
+                <!-- Form -->
+                <form th:object="${user}">
+                    <div class="row form-group">
+                        <label for="name" class="col-sm-3 col-form-label input-label">Adı</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="name" th:placeholder="${user.firstName}" readonly/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="surname" class="col-sm-3 col-form-label input-label">Soyadı</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="surname" th:placeholder="${user.lastName}" readonly />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="username" class="col-sm-3 col-form-label input-label">Kullanıcı Adı</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="username" th:placeholder="${user.userName}" readonly/>
+                        </div>
+                    </div>
 
-                <table class="table table-stripped table-hover">
-                    <thead class="thead-light">
-                    <tr>
-                        <th>Adı</th>
-                        <th>Soyadı</th>
-                        <th>Kullanıcı Adı</th>
-                        <th>Durum</th>
-                        <th class="text-right">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="user : ${listUsers}">
-                        <td th:text="${user.firstName}"></td>
-                        <td th:text="${user.lastName}"></td>
-                        <td th:text="${user.userName}"></td>
-                        <td th:text="${user.state}"></td>
-                    </tr>
+                    <div class="row form-group">
+                        <label for="password" class="col-sm-3 col-form-label input-label">Şifre</label>
+                        <div class="col-sm-12">
+                            <input th:type="password" class="form-control" id="password" readonly/>
+                        </div>
+                    </div>
 
-                    </tbody>
-                </table>
+                </form>
+                <!-- /Form -->
+
             </div>
         </div>
     </div>

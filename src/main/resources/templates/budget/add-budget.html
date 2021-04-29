@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{page_layouts/_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="col-md-12 col-sm-12">
+    <div class="col-xl-12 col-md-12">
+
+
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Bütçe Ekle</h5>
+        </div>
+        <div class="card-body">
+          <!-- Form -->
+          <form action="#" th:action="@{/budget/addBudget}" method="post">
+            <div class="row form-group">
+              <label for="baslangicTarihi" class="col-sm-3 col-form-label input-label">Kullanıcı</label>
+              <div class="col-md-12">
+                <select class="form-control" th:field="*{user}">
+                  <option th:text="${user.firstName}" th:value="${user.id}"></option>
+                </select>
+              </div>
+            </div>
+            <div class="row form-group">
+              <label for="baslangicTarihi" class="col-sm-3 col-form-label input-label">Başlangıç Tarihi (yyyy-mm-dd)</label>
+              <div class="col-sm-12">
+                <input type="text" th:field="${budget.startingDate}" class="form-control" id="baslangicTarihi" />
+              </div>
+            </div>
+            <div class="row form-group">
+              <label for="bitisTarihi" class="col-sm-3 col-form-label input-label">Bitiş Tarihi (yyyy-mm-dd)</label>
+              <div class="col-sm-12">
+                <input type="text" th:field="${budget.expirationDate}" class="form-control" id="bitisTarihi"  />
+              </div>
+            </div>
+            <div class="row form-group">
+              <label for="miktar" class="col-sm-3 col-form-label input-label">Miktar</label>
+              <div class="col-sm-12">
+                <input type="text" th:field="${budget.amount}"  class="form-control" id="miktar"/>
+              </div>
+            </div>
+
+            <div class="text-right">
+              <button type="submit" class="btn btn-primary">Kaydet</button>
+            </div>
+
+          </form>
+          <!-- /Form -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

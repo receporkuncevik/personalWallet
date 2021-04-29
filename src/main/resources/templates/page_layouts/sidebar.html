@@ -12,10 +12,19 @@
       <ul>
         <li class="menu-title"><span>Menü</span></li>
         <li class="active">
-          <a href="index.html"><i data-feather="home"></i> <span>Anasayfa</span></a>
+          <a href="#" th:href="@{/}"><i data-feather="home"></i> <span>Anasayfa</span></a>
         </li>
         <li>
-          <a href="customers.html"><i data-feather="users"></i> <span>Profil</span></a>
+          <a href="#" th:href="@{/budget/}"> <span>Bütçe</span></a>
+        </li>
+        <li>
+          <a href="#" th:href="@{/payment}"> <span>Ödemeler</span></a>
+        </li>
+        <li>
+          <a href="#" th:href="@{/payment-category}"> <span>Ödeme Kategorileri</span></a>
+        </li>
+        <li>
+          <a href="#" th:href="@{/user/}"><i data-feather="users"></i> <span>Profil</span></a>
         </li>
       </ul>
     </div>

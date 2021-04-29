@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layouts/_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <div class="col-md-12 col-sm-12">
+        <div class="col-xl-12 col-md-12">
+
+
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Ödeme Ekle</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Form -->
+                    <form action="#" th:action="@{/payment/addPayment}" method="post">
+                        <div class="row form-group">
+                            <label class="col-sm-3 col-form-label input-label">Kategori</label>
+                            <div class="col-md-12">
+                                <select class="form-control" th:field="*{paymentCategories}">
+                                    <th:block th:each="paymentCategory : ${paymentCategories}">
+                                        <option th:text="${paymentCategory.description}" th:value="${paymentCategory.id}"></option>
+                                    </th:block>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-sm-3 col-form-label input-label">Kullanıcı</label>
+                            <div class="col-md-12">
+                                <select class="form-control" th:field="*{user}">
+                                    <option th:text="${user.firstName}" th:value="${user.id}"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="description" class="col-sm-3 col-form-label input-label">Aciklama</label>
+                            <div class="col-sm-12">
+                                <input type="text" th:field="${payment.description}" class="form-control"
+                                       id="description"/>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="buyingdate" class="col-sm-3 col-form-label input-label">Satın Alma Tarihi
+                                (yyyy-mm-dd)</label>
+                            <div class="col-sm-12">
+                                <input type="text" th:field="${payment.buyingDate}" class="form-control"
+                                       id="buyingdate"/>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="odemetipi" class="col-sm-3 col-form-label input-label">Ödeme Tipi</label>
+                            <div class="col-sm-12">
+                                <input type="text" th:field="${payment.paymentType}" class="form-control"
+                                       id="odemetipi"/>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="miktar" class="col-sm-3 col-form-label input-label">Miktar</label>
+                            <div class="col-sm-12">
+                                <input type="text" th:field="${payment.amount}" class="form-control" id="miktar"/>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <label for="endingDate" class="col-sm-3 col-form-label input-label">Sonlanma Tarihi</label>
+                            <div class="col-sm-12">
+                                <input type="text" placeholder="Aylık Ödenen Bir Ödeme ise Buraya Tarih Giriniz." th:field="${payment.endingDate}" class="form-control" id="endingDate"/>
+                            </div>
+                        </div>
+
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+
+                    </form>
+                    <!-- /Form -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{page_layouts/_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div layout:fragment="content">
+
+      <div class="content container-fluid">
+          <div class="page-header">
+              <div class="row align-items-center">
+                  <div class="col">
+                      <h3 class="page-title">Bütçe
+                          <a th:href="@{/budget/add-budget}" class="btn btn-success text-right"> Ekle </a>
+                      </h3>
+
+                  </div>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-sm-12">
+                  <div class="card card-table">
+                      <div class="card-body">
+
+                          <div class="table-responsive">
+                              <table class="table table-stripped table-hover datatable">
+                                  <thead class="thead-light">
+                                  <tr>
+                                      <th>ID</th>
+                                      <th>Başlangıç Tarihi</th>
+                                      <th>Bitiş Tarihi</th>
+                                      <th>Bütçe Miktarı</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  <tr th:each="budget : ${listBudgets}">
+                                      <td>[[${budget.id}]]</td>
+                                      <td>[[${budget.startingDate}]]</td>
+                                      <td>[[${budget.expirationDate}]]</td>
+                                      <td>[[${budget.amount}]] TL</td>
+                                  </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </div>
+</body>
+</html>
