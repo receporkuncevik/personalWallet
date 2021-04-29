@@ -10,7 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 @Controller
@@ -38,6 +39,7 @@ public class BudgetController {
 
     @PostMapping("budget/addBudget")
     public String saveBudget(Budget budget) {
+        budget.setUser(userService.getUser(1));
         budgetService.saveBudget(budget);
         return "redirect:/budget/";
     }

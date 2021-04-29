@@ -1,6 +1,7 @@
 package com.readysoft.personalwallet.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,13 +19,14 @@ public class Budget {
     private User user;
 
 
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd",iso= DateTimeFormat.ISO.DATE)
     @Column(name = "baslangic_tarihi")
     private Date startingDate;
 
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd",iso= DateTimeFormat.ISO.DATE)
     @Column(name = "bitis_tarihi")
     private Date expirationDate;
+
     @Column(name = "miktar")
     private int amount;
 
