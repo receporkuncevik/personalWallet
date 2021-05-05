@@ -1,31 +1,27 @@
-
 package com.readysoft.personalwallet.service;
 
+import com.readysoft.personalwallet.model.CustomUserDetail;
 import com.readysoft.personalwallet.model.User;
 import com.readysoft.personalwallet.repository.UserRepository;
-import java.util.List;
-import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+
 @Service
-@Transactional
-public class UserServiceImpl implements UserService{
+public class CustomUserDetailService implements UserDetailsService {
 
     @Autowired
-    private UserRepository userRepo;
+    private UserRepository userRepository;
 
     @Override
-    public User getUser(int id) {
-        return userRepo.getOne(id);
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        User user = userRepository.findByUserName(userName);
+        if(user == null){
+            throw new UsernameNotFoundException("Kullanıcı Bulunamadı");
+        }
+        return new CustomUserDetail(user);
     }
-
-    @Override
-    public void save(User user) {
-        userRepo.save(user);
-    }
-
 }

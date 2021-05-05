@@ -50,12 +50,11 @@
 								<img src="#" alt="">
 								<span class="status online"></span>
 							</span>
-        <span>Admin</span>
+        <span>[[${#request.userPrincipal.principal.fullName}]]</span>
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#"><i data-feather="user" class="mr-1"></i> Profile</a>
-        <a class="dropdown-item" href="#"><i data-feather="settings" class="mr-1"></i> Settings</a>
-        <a class="dropdown-item" href="#"><i data-feather="log-out" class="mr-1"></i> Logout</a>
+        <a class="dropdown-item" th:href="@{/user/}"><i data-feather="user" class="mr-1"></i> Profil</a>
+        <a class="dropdown-item" th:href="@{/logout}"><i data-feather="log-out" class="mr-1"></i> Cıkıs yap</a>
       </div>
     </li>
     <!-- /User Menu -->

@@ -5,6 +5,7 @@ import com.readysoft.personalwallet.repository.BudgetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Id;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -17,8 +18,8 @@ public class BudgetServiceImpl implements BudgetService{
 
 
     @Override
-    public List<Budget> getAllBudget() {
-        return budgetRepository.findAll();
+    public List<Budget> getAllBudgetFromId(int id) {
+        return budgetRepository.getAllBudgetFromId(id);
     }
 
     @Override

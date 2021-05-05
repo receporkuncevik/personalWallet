@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "kullanicilar")
 public class User {
@@ -24,7 +25,7 @@ public class User {
     @Column(name = "sifre")
     private String password;
     @Column(name = "aktif")
-    private boolean state;
+    private boolean state = true;
 
     public User() {
     }
@@ -70,10 +71,6 @@ public class User {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -85,5 +82,10 @@ public class User {
     public void setState(boolean state) {
         this.state = state;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
 
 }

@@ -16,22 +16,19 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
     @GetMapping("/user")
     public String getUser(Model model){
-        model.addAttribute("user", userService.getUser(1));
         return "/user/index";
     }
 
     @GetMapping("/user/edit")
     public String showEdit(Model model){
-        model.addAttribute("user", userService.getUser(1));
         return "/user/edit";
     }
 
     @PostMapping("/user/saveuser")
     public String editUser(@ModelAttribute("user") User user){
-        userService.saveUser(user);
+        userService.save(user);
         return "redirect:/user";
 
     }

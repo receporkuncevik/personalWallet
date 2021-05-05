@@ -18,23 +18,15 @@
           <!-- Form -->
           <form action="#" th:action="@{/budget/addBudget}" method="post">
             <div class="row form-group">
-              <label for="baslangicTarihi" class="col-sm-3 col-form-label input-label">Kullanıcı</label>
-              <div class="col-md-12">
-                <select class="form-control" th:field="${user}">
-                  <option th:text="${user.firstName}" th:value="${user.id}"></option>
-                </select>
+              <label for="startingDate" class="col-sm-3 col-form-label input-label">Başlangıç Tarihi</label>
+              <div class="col-sm-12">
+                <input type="date" th:field="${budget.startingDate}" class="form-control" id="startingDate" />
               </div>
             </div>
             <div class="row form-group">
-              <label for="date" class="col-sm-3 col-form-label input-label">Başlangıç Tarihi</label>
+              <label for="expirationDate" class="col-sm-3 col-form-label input-label">Bitiş Tarihi</label>
               <div class="col-sm-12">
-                <input type="date" th:field="${budget.startingDate}" class="form-control" id="date" />
-              </div>
-            </div>
-            <div class="row form-group">
-              <label for="date" class="col-sm-3 col-form-label input-label">Bitiş Tarihi</label>
-              <div class="col-sm-12">
-                <input type="date" th:field="${budget.expirationDate}" class="form-control" id="date"  />
+                <input type="date" th:field="${budget.expirationDate}" class="form-control" id="expirationDate"  />
 
               </div>
             </div>

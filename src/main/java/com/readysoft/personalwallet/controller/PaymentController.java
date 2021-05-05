@@ -31,9 +31,7 @@ public class PaymentController {
 
     @GetMapping("/payment/add-payment")
     public String addShowPayment(Model model){
-        User user = userService.getUser(1);
         model.addAttribute("payment",  new Payment());
-        model.addAttribute("user", user);
         model.addAttribute("paymentCategories", paymentCategoryService.listPaymentCategories());
         return "/payment/add-payment";
     }

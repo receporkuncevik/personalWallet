@@ -6,6 +6,6 @@ import com.readysoft.personalwallet.model.User;
 import java.util.List;
 
 public interface BudgetService {
-    List<Budget> getAllBudget();
+    List<Budget> getAllBudgetFromId(int id);
     void saveBudget(Budget budget);
 }
