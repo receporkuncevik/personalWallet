@@ -12,11 +12,17 @@
 
       <div class="card">
         <div class="card-header">
-          <h5 class="card-title">Bütçe Ekle</h5>
+          <div th:if="${budget.id == null}">
+            <h5 class="card-title">Bütçe Düzenle</h5>
+          </div>
+          <div th:unless="${budget.id == null}">
+            <h5 class="card-title">Bütçe Ekle</h5>
+          </div>
         </div>
         <div class="card-body">
           <!-- Form -->
           <form action="#" th:action="@{/budget/addBudget}" method="post">
+            <input type="hidden" th:field="${budget.id}" th:value="${budget.id}" />
             <div class="row form-group">
               <label for="startingDate" class="col-sm-3 col-form-label input-label">Başlangıç Tarihi</label>
               <div class="col-sm-12">

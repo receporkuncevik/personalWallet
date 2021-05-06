@@ -10,6 +10,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -27,6 +28,7 @@ public class BudgetController {
     public String listBudget(@AuthenticationPrincipal CustomUserDetail user,Model model) {
         User newUser = userService.getUser(user.getUser().getId());
         model.addAttribute("listBudgets", budgetService.getAllBudgetFromId(newUser.getId()));
+        System.out.println(userService);
         return "/budget/index";
     }
 
@@ -41,6 +43,21 @@ public class BudgetController {
     public String saveBudget(@AuthenticationPrincipal CustomUserDetail user,Budget budget) {
         budget.setUser(user.getUser());
         budgetService.saveBudget(budget);
+        return "redirect:/budget";
+    }
+
+    @GetMapping("budget/edit/{id}")
+    public String showEditBudget(@AuthenticationPrincipal CustomUserDetail user,@PathVariable("id") Integer id,Model model){
+        Budget budget = budgetService.findById(id).get();
+        budget.setUser(user.getUser());
+        model.addAttribute("budget", budget);
+
+        return "/budget/add-budget";
+    }
+
+    @GetMapping("budget/delete/{id}")
+    public String deleteBudget(@PathVariable("id") Integer id,Model model){
+        budgetService.deleteById(id);
         return "redirect:/budget";
     }
 

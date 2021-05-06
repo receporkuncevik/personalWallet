@@ -1,4 +1,4 @@
-package com.readysoft.personalwallet;
+package com.readysoft.personalwallet.repository;
 
 import com.readysoft.personalwallet.model.User;
 import com.readysoft.personalwallet.repository.UserRepository;

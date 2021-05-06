@@ -5,9 +5,9 @@ import com.readysoft.personalwallet.repository.BudgetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Id;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -26,4 +26,16 @@ public class BudgetServiceImpl implements BudgetService{
     public void saveBudget(Budget budget) {
         budgetRepository.save(budget);
     }
+
+    @Override
+    public Optional<Budget> findById(Integer id) {
+        return budgetRepository.findById(id);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        budgetRepository.deleteById(id);
+    }
+
+
 }
