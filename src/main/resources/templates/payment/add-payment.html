@@ -3,7 +3,7 @@
       layout:decorate="~{page_layouts/_layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Ödeme Ekle</title>
 </head>
 <body>
 
@@ -14,26 +14,20 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Ödeme Ekle</h5>
+                    <div th:if="${payment.id}"><h5 class="card-title">Ödeme Güncelle </h5></div>
+                    <div th:unless="${payment.id}"><h5 class="card-title">Ödeme Ekle</h5></div>
                 </div>
                 <div class="card-body">
                     <!-- Form -->
                     <form action="#" th:action="@{/payment/addPayment}" method="post">
                         <div class="row form-group">
+                            <input type="hidden" th:field="${payment.id}" th:value="${payment.id}" />
                             <label class="col-sm-3 col-form-label input-label">Kategori</label>
                             <div class="col-md-12">
-                                <select class="form-control" th:field="*{paymentCategories}">
+                                <select class="form-control" th:field="*{payment.category}">
                                     <th:block th:each="paymentCategory : ${paymentCategories}">
                                         <option th:text="${paymentCategory.description}" th:value="${paymentCategory.id}"></option>
                                     </th:block>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="col-sm-3 col-form-label input-label">Kullanıcı</label>
-                            <div class="col-md-12">
-                                <select class="form-control" th:field="*{user}">
-                                    <option th:text="${user.firstName}" th:value="${user.id}"></option>
                                 </select>
                             </div>
                         </div>
@@ -46,9 +40,9 @@
                         </div>
                         <div class="row form-group">
                             <label for="buyingdate" class="col-sm-3 col-form-label input-label">Satın Alma Tarihi
-                                (yyyy-mm-dd)</label>
+                                </label>
                             <div class="col-sm-12">
-                                <input type="text" th:field="${payment.buyingDate}" class="form-control"
+                                <input type="date" th:field="${payment.buyingDate}" class="form-control"
                                        id="buyingdate"/>
                             </div>
                         </div>
@@ -69,7 +63,7 @@
                         <div class="row form-group">
                             <label for="endingDate" class="col-sm-3 col-form-label input-label">Sonlanma Tarihi</label>
                             <div class="col-sm-12">
-                                <input type="text" placeholder="Aylık Ödenen Bir Ödeme ise Buraya Tarih Giriniz." th:field="${payment.endingDate}" class="form-control" id="endingDate"/>
+                                <input type="date" placeholder="Aylık Ödenen Bir Ödeme ise Buraya Tarih Giriniz." th:field="${payment.endingDate}" class="form-control" id="endingDate"/>
                             </div>
                         </div>
 

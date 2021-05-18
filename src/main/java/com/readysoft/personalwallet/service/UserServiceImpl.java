@@ -4,6 +4,7 @@ package com.readysoft.personalwallet.service;
 import com.readysoft.personalwallet.model.User;
 import com.readysoft.personalwallet.repository.UserRepository;
 import java.util.List;
+import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,9 +19,10 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepository userRepo;
 
+
     @Override
-    public User getUser(int id) {
-        return userRepo.getOne(id);
+    public Optional<User> findById(Integer id) {
+        return userRepo.findById(id);
     }
 
     @Override

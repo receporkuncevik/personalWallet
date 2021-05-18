@@ -56,4 +56,22 @@ public class CustomUserDetail implements UserDetails {
         return this.user;
     }
 
+    public void setUserName(String username){
+        this.user.setUserName(username);
+    }
+
+    public void setFirstName(String firstName){
+        this.user.setFirstName(firstName);
+    }
+
+    public void setLastName(String lastName){
+        this.user.setLastName(lastName);
+    }
+
+    public void setPassword(String password) {
+        this.user.setPassword(password);
+    }
+
+
+
 }

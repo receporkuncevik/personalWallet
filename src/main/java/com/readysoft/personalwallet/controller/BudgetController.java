@@ -26,9 +26,8 @@ public class BudgetController {
 
     @GetMapping("/budget")
     public String listBudget(@AuthenticationPrincipal CustomUserDetail user,Model model) {
-        User newUser = userService.getUser(user.getUser().getId());
-        model.addAttribute("listBudgets", budgetService.getAllBudgetFromId(newUser.getId()));
-        System.out.println(userService);
+        User currentUser = userService.findById(user.getUser().getId()).get();
+        model.addAttribute("listBudgets", budgetService.getAllBudgetFromId(currentUser.getId()));
         return "/budget/index";
     }
 

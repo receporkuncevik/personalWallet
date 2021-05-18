@@ -1,5 +1,7 @@
 package com.readysoft.personalwallet.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -21,12 +23,19 @@ public class Payment {
 
     @Column(name="aciklama")
     private String description;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd",iso= DateTimeFormat.ISO.DATE)
     @Column(name="tarih")
     private Date buyingDate;
+
+
     @Column(name="odeme_tipi")
     private String paymentType;
+
     @Column(name="miktar")
     private int amount;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd",iso= DateTimeFormat.ISO.DATE)
     @Column(name="sonlanma_tarihi")
     private Date endingDate;
 

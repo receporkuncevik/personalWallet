@@ -12,5 +12,4 @@ public interface BudgetRepository extends JpaRepository<Budget, Integer> {
     List<Budget> getAllBudgetFromId(int id);
 
 
-
 }

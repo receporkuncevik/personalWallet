@@ -13,43 +13,37 @@
 
       <div class="card">
         <div class="card-header">
-          <h5 class="card-title">Profil Düzenle</h5>
+          <h5 class="card-title">Profili Düzenle</h5>
         </div>
         <div class="card-body">
           <!-- Form -->
-          <form action="#" th:action="@{/user/saveuser}" method="post">
-            <input type="hidden" th:value="${user.id}" />
-            <div class="row form-group">
-              <label for="name" class="col-sm-3 col-form-label input-label">Adı</label>
-              <div class="col-sm-12">
-                <input type="text" th:field="${user.firstName}" class="form-control" id="name" />
-              </div>
-            </div>
-            <div class="row form-group">
-              <label for="surname" class="col-sm-3 col-form-label input-label">Soyadı</label>
-              <div class="col-sm-12">
-                <input type="text" th:field="${user.lastName}" class="form-control" id="surname"  />
-              </div>
-            </div>
-            <div class="row form-group">
-              <label for="username" class="col-sm-3 col-form-label input-label">Kullanıcı Adı</label>
-              <div class="col-sm-12">
-                <input type="text" th:field="${user.userName}" class="form-control" id="username"/>
-              </div>
-            </div>
+          <form th:action="@{/user/update}" method="post">
 
-            <div class="row form-group">
-              <label for="password" class="col-sm-3 col-form-label input-label">Şifre</label>
-              <div class="col-sm-12">
-                <input th:type="password" th:field="${user.password}" class="form-control" id="password" />
-              </div>
+            <input type="hidden" th:field="${user.id}" th:value="${user.id}" />
+
+            <div class="form-group">
+              <label class="form-control-label">Adı</label>
+              <input class="form-control" type="text" th:field="${user.firstName}">
+            </div>
+            <div class="form-group">
+              <label class="form-control-label">Soyadı</label>
+              <input class="form-control" type="text" th:field="${user.lastName}">
+            </div>
+            <div class="form-group">
+              <label class="form-control-label">Kullanıcı Adı</label>
+              <input class="form-control" type="text" th:field="${user.userName}">
+            </div>
+            <div class="form-group">
+              <label class="form-control-label">Sifre</label>
+              <input class="form-control" type="password" name="password" th:value="${user.password}">
             </div>
 
             <div class="text-right">
-              <button type="submit" class="btn btn-primary">Kaydet</button>
+              <button type="submit" class="btn btn-primary">Güncelle</button>
             </div>
 
           </form>
+
           <!-- /Form -->
 
         </div>
