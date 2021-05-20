@@ -7,14 +7,16 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
 @Transactional
-public class PaymentCategoryImpl implements PaymentCategoryService{
+public class PaymentCategoryServiceImpl implements PaymentCategoryService{
 
     @Autowired
     private PaymentCategoryRepository paymentCategoryRepository;
+
 
     @Override
     public List<PaymentCategory> listPaymentCategories() {
@@ -24,5 +26,10 @@ public class PaymentCategoryImpl implements PaymentCategoryService{
     @Override
     public void addPaymentCategory(PaymentCategory paymentCategory) {
         paymentCategoryRepository.save(paymentCategory);
+    }
+
+    @Override
+    public Optional<PaymentCategory> findById(int id) {
+        return paymentCategoryRepository.findById(id);
     }
 }

@@ -16,7 +16,6 @@ public class BudgetServiceImpl implements BudgetService{
     @Autowired
     private BudgetRepository budgetRepository;
 
-
     @Override
     public List<Budget> getAllBudgetFromId(int id) {
         return budgetRepository.getAllBudgetFromId(id);
