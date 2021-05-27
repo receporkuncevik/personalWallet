@@ -30,4 +30,9 @@ public class UserServiceImpl implements UserService{
         userRepo.save(user);
     }
 
+    @Override
+    public List<User> findAll() {
+        return userRepo.findAll();
+    }
+
 }

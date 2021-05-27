@@ -26,10 +26,13 @@ public class PaymentController {
     @Autowired
     private PaymentCategoryService paymentCategoryService;
 
+
     @GetMapping("/payment")
     public String listPayment(@AuthenticationPrincipal CustomUserDetail user, Model model){
         User currentUser = userService.findById(user.getUser().getId()).get();
         model.addAttribute("listPayments", paymentService.getAllPaymentWithUserId(currentUser.getId()));
+        paymentService.attach(currentUser);
+        paymentService.checkPaymentDateDue();
         return "/payment/index";
     }
 

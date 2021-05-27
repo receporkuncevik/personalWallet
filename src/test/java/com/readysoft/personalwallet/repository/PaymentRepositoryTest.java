@@ -13,6 +13,7 @@ import org.springframework.test.annotation.Rollback;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -40,13 +41,10 @@ public class PaymentRepositoryTest {
         User registeredUser = userRepository.findByUserName("receporkun");
         PaymentCategory paymentCategory = paymentCategoryRepository.findById(2).get();
 
-        String startingDate = "2021-05-06";
-        String endingDate = "2021-06-07";
+        String startingDate = "2021-05-28";
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date startDateInDateType = formatter.parse(startingDate);
-        Date endDateInDateType = formatter.parse(endingDate);
-
 
         Payment payment = new Payment();
         payment.setUser(registeredUser);
@@ -55,7 +53,7 @@ public class PaymentRepositoryTest {
         payment.setPaymentType("Nakit");
         payment.setDescription("Arkadaşlarla kahve keyfiiii");
         payment.setBuyingDate(startDateInDateType);
-        payment.setEndingDate(endDateInDateType);
+        payment.setPlannedPayment(true);
         Payment savedPayment = paymentRepository.save(payment);
         assertNotNull(savedPayment);
     }
@@ -82,6 +80,18 @@ public class PaymentRepositoryTest {
         assertThat(paymentList).size().isGreaterThan(0);
     }
 
+    @Test
+    public void testPlannedPaymentList(){
+        User registeredUser = userRepository.findByUserName("receporkun");
+        List<Payment> paymentList = paymentRepository.getAllPlannedPaymentWihtUserId(registeredUser.getId());
+
+        for (Payment payment: paymentList){
+            System.out.println(payment.isPlannedPayment());
+        }
+
+        assertThat(paymentList).size().isGreaterThan(0);
+    }
+
 
     @Test
     public void testDeletePayment(){
@@ -92,6 +102,18 @@ public class PaymentRepositoryTest {
 
         assertTrue(isExistBeforeDelete);
         assertFalse(notExistAfterDelete);
+
+    }
+
+    @Test
+    public void testGetByCategory(){
+
+        int sum=0;
+        for (Payment payment: paymentRepository.getByCategory(2)){
+            sum += payment.getAmount();
+            System.out.println(payment.getCategory().getDescription() + " " + payment.getDescription());
+        }
+        System.out.println("Bu Kategorideki Alışveriş Toplam Tutarı: "+ sum);
 
 
     }

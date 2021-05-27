@@ -1,5 +1,8 @@
 package com.readysoft.personalwallet.model;
 
+import com.readysoft.personalwallet.utilities.mail.EmailSender;
+import com.readysoft.personalwallet.utilities.observer.Observer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -8,6 +11,9 @@ import java.util.Collection;
 public class CustomUserDetail implements UserDetails {
 
     private User user;
+
+    @Autowired
+    private EmailSender emailSender;
 
     public CustomUserDetail(User user){
         this.user = user;
@@ -71,7 +77,5 @@ public class CustomUserDetail implements UserDetails {
     public void setPassword(String password) {
         this.user.setPassword(password);
     }
-
-
 
 }

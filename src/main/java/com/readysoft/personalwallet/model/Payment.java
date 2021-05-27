@@ -35,14 +35,13 @@ public class Payment {
     @Column(name="miktar")
     private int amount;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd",iso= DateTimeFormat.ISO.DATE)
-    @Column(name="sonlanma_tarihi")
-    private Date endingDate;
+    @Column(name="planli_odeme")
+    private boolean isPlannedPayment;
 
     public Payment() {
     }
 
-    public Payment(int id, PaymentCategory category, User user, String description, Date buyingDate, String paymentType, int amount, Date endingDate) {
+    public Payment(int id, PaymentCategory category, User user, String description, Date buyingDate, String paymentType, int amount, boolean isPlannedPayment) {
         this.id = id;
         this.category = category;
         this.user = user;
@@ -50,7 +49,7 @@ public class Payment {
         this.buyingDate = buyingDate;
         this.paymentType = paymentType;
         this.amount = amount;
-        this.endingDate = endingDate;
+        this.isPlannedPayment = isPlannedPayment;
     }
 
     public int getId() {
@@ -109,11 +108,11 @@ public class Payment {
         this.amount = amount;
     }
 
-    public Date getEndingDate() {
-        return endingDate;
+    public boolean isPlannedPayment() {
+        return isPlannedPayment;
     }
 
-    public void setEndingDate(Date endingDate) {
-        this.endingDate = endingDate;
+    public void setPlannedPayment(boolean plannedPayment) {
+        isPlannedPayment = plannedPayment;
     }
 }

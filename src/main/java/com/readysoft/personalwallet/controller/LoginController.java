@@ -1,6 +1,7 @@
 package com.readysoft.personalwallet.controller;
 
 import com.readysoft.personalwallet.model.User;
+import com.readysoft.personalwallet.service.PaymentService;
 import com.readysoft.personalwallet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -20,6 +21,9 @@ public class LoginController {
     private UserService userService;
 
     @Autowired
+    private PaymentService paymentService;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
 
@@ -29,6 +33,7 @@ public class LoginController {
         if(authentication == null || authentication instanceof AnonymousAuthenticationToken){
             return "/login/login";
         }
+
         return "redirect:/budget";
     }
 

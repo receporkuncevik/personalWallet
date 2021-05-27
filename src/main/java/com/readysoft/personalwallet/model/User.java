@@ -1,5 +1,10 @@
 package com.readysoft.personalwallet.model;
 
+import com.readysoft.personalwallet.utilities.mail.EmailService;
+import com.readysoft.personalwallet.utilities.observer.Observer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "kullanicilar")
-public class User {
+public class User implements Observer{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -87,5 +92,9 @@ public class User {
         return password;
     }
 
-
+    @Override
+    public void update() {
+        Logger logger = LoggerFactory.getLogger(User.class);
+        logger.warn("Yaklaşan Ödemeleriniz Var.");
+    }
 }

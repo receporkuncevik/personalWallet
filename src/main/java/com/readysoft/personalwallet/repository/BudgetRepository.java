@@ -11,5 +11,4 @@ public interface BudgetRepository extends JpaRepository<Budget, Integer> {
     @Query("SELECT b FROM Budget b where b.user.id = ?1")
     List<Budget> getAllBudgetFromId(int id);
 
-
 }
