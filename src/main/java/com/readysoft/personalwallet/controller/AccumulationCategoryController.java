@@ -14,10 +14,10 @@ public class AccumulationCategoryController {
     @Autowired
     private AccumulationCategoryService accumulationCategoryService;
 
-    @GetMapping("accumulation-category")
+    @GetMapping("/accumulation-category")
     public String listAccumulationCategory(Model model){
         model.addAttribute("listAccumulationCategory", accumulationCategoryService.listAccumulationCategory());
-        return "accumulation-category/index";
+        return "/accumulation-category/index";
     }
 
     @GetMapping("/accumulation-category/add-accumulation-category")

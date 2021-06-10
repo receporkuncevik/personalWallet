@@ -12,9 +12,9 @@ public class Credit {
     @JoinColumn(name="kategori_id")
     private CreditCategory creditCategory;
 
-    /*@OneToOne
+    @ManyToOne
     @JoinColumn(name="banka_id")
-    private Bank bank;*/
+    private Bank bank;
 
     @ManyToOne
     @JoinColumn(name="kullanici_id")
@@ -32,10 +32,10 @@ public class Credit {
     public Credit() {
     }
 
-    public Credit(int id, CreditCategory creditCategory /*Bank bank*/, User user, String description, String paymentPlan, int amountReceived) {
+    public Credit(int id, CreditCategory creditCategory, Bank bank, User user, String description, String paymentPlan, int amountReceived) {
         this.id = id;
         this.creditCategory = creditCategory;
-        /*this.bank = bank;*/
+        this.bank = bank;
         this.user = user;
         this.description = description;
         this.paymentPlan = paymentPlan;
@@ -58,13 +58,13 @@ public class Credit {
         this.creditCategory = creditCategory;
     }
 
-    /*public Bank getBank() {
+    public Bank getBank() {
         return bank;
     }
 
     public void setBank(Bank bank) {
         this.bank = bank;
-    }*/
+    }
 
     public User getUser() {
         return user;

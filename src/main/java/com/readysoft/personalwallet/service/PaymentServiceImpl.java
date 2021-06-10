@@ -61,6 +61,21 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
+    public int totalAmount(Integer userId) {
+        int sum = 0;
+        for(Payment payment: paymentRepository.getAllPaymentWithUserId(userId)){
+            sum += payment.getAmount();
+        }
+        return sum;
+    }
+
+    @Override
+    public List<Payment> getAllPaymentDescendingOrderWithUserId(int id) {
+        return paymentRepository.getAllPaymentDescendingOrderWithUserId(id);
+    }
+
+
+    @Override
     public void attach(User userObserver) {
         userObserverList.add(userObserver);
     }

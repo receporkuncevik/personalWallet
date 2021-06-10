@@ -14,4 +14,8 @@ public interface PaymentService extends Subject {
     void deleteById(int id);
     Optional<Payment> findById(Integer id);
     void checkPaymentDateDue();
+    int totalAmount(Integer userId);
+
+    List<Payment> getAllPaymentDescendingOrderWithUserId(int id);
+
 }

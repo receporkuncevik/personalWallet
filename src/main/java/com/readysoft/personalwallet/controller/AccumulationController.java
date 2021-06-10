@@ -33,7 +33,7 @@ public class AccumulationController {
     @GetMapping("/accumulation/add-accumulation")
     public String addShowAccumulation(@AuthenticationPrincipal CustomUserDetail user,Model model){
         model.addAttribute("accumulation",  new Accumulation());
-        model.addAttribute("accumulationCategeries", accumulationCategoryService.listAccumulationCategory());
+        model.addAttribute("accumulationCategories", accumulationCategoryService.listAccumulationCategory());
         return "/accumulation/add-accumulation";
     }
 

@@ -40,10 +40,11 @@
                 <tbody>
                 <tr th:each="credit : ${listCredits}">
                   <td>[[${credit.id}]]</td>
-                  <td>[[${credit.category.description}]]</td>
-                  <td>[[${credit.bank}]]</td>
-                  <td>[[${credit.amountReceived}]] </td>
+                  <td>[[${credit.creditCategory.description}]]</td>
+                  <td>[[${credit.bank.name}]]</td>
                   <td>[[${credit.description}]]</td>
+                  <td>[[${credit.paymentPlan}]] Ay</td>
+                  <td>[[${credit.amountReceived}]] </td>
                   <td>
                     <a class="btn btn-sm btn-white text-success mr-2" th:href="@{'/credit/edit/' + ${credit.id}}"><i class="far fa-edit mr-1"></i>Düzenle</a>
                     <a href="javascript:void(0);" th:href="@{'/credit/delete/' + ${credit.id}}" class="btn btn-sm btn-white text-danger mr-2"><i class="far fa-trash-alt mr-1"></i>Sil</a>

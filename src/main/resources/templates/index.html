@@ -7,5 +7,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+
+<div layout:fragment="content">
+        <div class="col-xl-4 col-sm-6 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="dash-widget-header">
+										<span class="dash-widget-icon bg-1">
+											<i class="fas fa-dollar-sign"></i>
+										</span>
+                        <div class="dash-count">
+                            <div class="dash-title">Bütçeniz</div>
+                            <div class="dash-counts">
+
+                                <p th:each="budget: ${budgetList}">[[${budget.amount}]]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-sm-6 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="dash-widget-header">
+										<span class="dash-widget-icon bg-2">
+											<i class="fas fa-users"></i>
+										</span>
+                        <div class="dash-count">
+                            <div class="dash-title">Bütçeden Kalan Miktar</div>
+                            <div class="dash-counts">
+                                <p>[[${remainingBudget}]]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-sm-6 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="dash-widget-header">
+										<span class="dash-widget-icon bg-3">
+											<i class="fas fa-file-alt"></i>
+										</span>
+                        <div class="dash-count">
+                            <div class="dash-title">Toplam Yapılan Ödeme Tutarı</div>
+                            <div class="dash-counts">
+                                <p>[[${totalPayment}]]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title">Yapılan Son 10 Odeme</h5>
+                    </div>
+                    <div class="col-auto">
+                        <a href="#" th:href="@{/payment}" class="btn-right btn btn-sm btn-outline-primary">
+                            Bütün Ödemeleri Göster
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="table table-stripped table-hover datatable">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>Kategori</th>
+                            <th>Aciklama</th>
+                            <th>Ödeme Tarihi</th>
+                            <th>Ödeme Tipi</th>
+                            <th>Miktar</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="payment : ${lastTenPayment}">
+                            <td>[[${payment.category.description}]]</td>
+                            <td>[[${payment.description}]]</td>
+                            <td>[[${payment.buyingDate}]] </td>
+                            <td>[[${payment.paymentType}]]</td>
+                            <td>[[${payment.amount}]] TL</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+
+
+</div>
+
 </body>
 </html>

@@ -18,4 +18,7 @@ public interface PaymentRepository extends JpaRepository<Payment, Integer> {
     @Query("SELECT p FROM Payment p WHERE p.category.id=?1")
     List<Payment> getByCategory(int categoryId);
 
+    @Query("SELECT p FROM Payment p WHERE p.user.id=?1 ORDER BY p.id DESC")
+    List<Payment> getAllPaymentDescendingOrderWithUserId(int id);
+
 }

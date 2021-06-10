@@ -20,9 +20,9 @@
         <div class="card-body">
           <!-- Form -->
           <form action="#" th:action="@{/credit/addCredit}" method="post">
+            <input type="hidden" th:field="${credit.id}" th:value="${credit.id}" />
             <div class="row form-group">
-              <input type="hidden" th:field="${credit.id}" th:value="${credit.id}" />
-              <label class="col-sm-3 col-form-label input-label">Kategori</label>
+              <label class="col-sm-3 col-form-label input-label">Kredi Kategori</label>
               <div class="col-md-12">
                 <select class="form-control" th:field="*{credit.creditCategory}">
                   <th:block th:each="creditCategory : ${creditCategories}">
@@ -32,18 +32,20 @@
               </div>
             </div>
             <div class="row form-group">
+              <label class="col-sm-3 col-form-label input-label">Bankalar</label>
+              <div class="col-md-12">
+                <select class="form-control" th:field="*{credit.bank}">
+                  <th:block th:each="bank : ${allBanks}">
+                    <option th:text="${bank.name}" th:value="${bank.id}"></option>
+                  </th:block>
+                </select>
+              </div>
+            </div>
+            <div class="row form-group">
               <label for="description" class="col-sm-3 col-form-label input-label">Aciklama</label>
               <div class="col-sm-12">
                 <input type="text" th:field="${credit.description}" class="form-control"
                        id="description"/>
-              </div>
-            </div>
-            <div class="row form-group">
-              <label for="bank" class="col-sm-3 col-form-label input-label">Banka
-              </label>
-              <div class="col-sm-12">
-                <input type="date" th:field="${credit.bank}" class="form-control"
-                       id="bank"/>
               </div>
             </div>
             <div class="row form-group">
