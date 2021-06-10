@@ -46,14 +46,17 @@ public class HomeController {
     }
 
     private List<Payment> getLastTenPayment(List<Payment> paymentList){
-        List<Payment> lastTenPayment= new ArrayList<>();
-        for(int i=0; i < paymentList.size(); i++){
-            lastTenPayment.add(paymentList.get(i));
-            if(i==10){
-                break;
+        if(paymentList.size()> 0) {
+            List<Payment> lastTenPayment = new ArrayList<>();
+            for (int i = 0; i < paymentList.size(); i++) {
+                lastTenPayment.add(paymentList.get(i));
+                if (i == 10) {
+                    break;
+                }
             }
+            return lastTenPayment;
         }
-        return lastTenPayment;
+        return null;
     }
     
 }
