@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layouts/_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="col-md-12 col-sm-12">
+        <div class="col-xl-12 col-md-12">
+
+
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Kategori Ekle</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Form -->
+                    <form action="#" th:action="@{/credit-category/addcreditcategory}" method="post">
+                        <div class="row form-group">
+                            <label for="description" class="col-sm-3 col-form-label input-label">Kategori Açıklama</label>
+                            <div class="col-sm-12">
+                                <input type="text" th:field="${creditCategory.description}" class="form-control" id="description" />
+                            </div>
+                        </div>
+
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+
+                    </form>
+                    <!-- /Form -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layouts/_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Birikim kategorisi
+                        <a th:href="@{/accumulation-category/add-accumulation-category}" class="btn btn-success text-right"> Ekle </a>
+                    </h3>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card card-table">
+                    <div class="card-body">
+
+                        <div class="table-responsive">
+                            <table class="table table-stripped table-hover datatable">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Kategori Adı</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="accumulationCategory : ${listAccumulationCategory}">
+                                    <td>[[${accumulationCategory.id}]]</td>
+                                    <td>[[${accumulationCategory.description}]]</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
