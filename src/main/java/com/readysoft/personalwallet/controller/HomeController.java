@@ -56,7 +56,7 @@ public class HomeController {
             }
             return lastTenPayment;
         }
-        return null;
+        return paymentList;
     }
     
 }
