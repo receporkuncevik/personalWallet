@@ -17,7 +17,6 @@ public class PaymentCategoryServiceImpl implements PaymentCategoryService{
     @Autowired
     private PaymentCategoryRepository paymentCategoryRepository;
 
-
     @Override
     public List<PaymentCategory> listPaymentCategories() {
         return paymentCategoryRepository.findAll();

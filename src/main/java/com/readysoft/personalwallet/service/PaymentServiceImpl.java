@@ -54,6 +54,7 @@ public class PaymentServiceImpl implements PaymentService {
         for(Payment payment : plannedPaymentList){
             LocalDate paymentDate = Instant.ofEpochMilli(payment.getBuyingDate().getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
             if(LocalDate.now().getDayOfMonth() == (paymentDate.getDayOfMonth() - 1 )){
+                System.out.println(payment.getDescription() + " " + payment.getBuyingDate());
                 notifyUpdate();
             }
         }

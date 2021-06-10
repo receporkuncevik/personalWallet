@@ -39,7 +39,7 @@ public class PaymentRepositoryTest {
     @Test
     public void testCreatePayment() throws ParseException {
         User registeredUser = userRepository.findByUserName("receporkun");
-        PaymentCategory paymentCategory = paymentCategoryRepository.findById(2).get();
+        PaymentCategory paymentCategory = paymentCategoryRepository.findById(5).get();
 
         String startingDate = "2021-05-28";
 
@@ -51,7 +51,7 @@ public class PaymentRepositoryTest {
         payment.setCategory(paymentCategory);
         payment.setAmount(37);
         payment.setPaymentType("Nakit");
-        payment.setDescription("Arkadaşlarla kahve keyfiiii");
+        payment.setDescription("Netflix Ödemesi");
         payment.setBuyingDate(startDateInDateType);
         payment.setPlannedPayment(true);
         Payment savedPayment = paymentRepository.save(payment);

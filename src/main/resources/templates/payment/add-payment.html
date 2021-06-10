@@ -61,9 +61,18 @@
                         </div>
 
                         <div class="row form-group">
-                            <label for="endingDate" class="col-sm-3 col-form-label input-label">Planlı Ödeme mi?</label>
-                            <div class="col-sm-12">
-                                <input type="date" placeholder="Aylık Ödenen Bir Ödeme ise Buraya Tarih Giriniz." th:field="${payment.endingDate}" class="form-control" id="endingDate"/>
+                            <label class="col-sm-3 col-form-label input-label">Planlı Ödeme mi?</label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="radio" th:field="${payment.plannedPayment}" th:value="${true}" name="radio"> Evet
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="radio" th:field="${payment.plannedPayment}" th:value="${false}" name="radio"> Hayır
+                                    </label>
+                                </div>
                             </div>
                         </div>
 

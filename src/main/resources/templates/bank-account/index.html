@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{page_layouts/_layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>Ödeme</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title"> Banka Hesapları
+            <a th:href="@{/bank-account/add-bank-account}" class="btn btn-success text-right"> Ekle </a>
+          </h3>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card card-table">
+          <div class="card-body">
+
+            <div class="table-responsive">
+              <table class="table table-stripped table-hover datatable">
+                <thead class="thead-light">
+                <tr>
+                  <th>ID</th>
+                  <th>Banka Adı</th>
+                  <th>IBAN Numarası</th>
+                  <th>Musteri Numarası</th>
+                  <th>Islemler</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="bankAccount : ${listBankAccounts}">
+                  <td>[[${bankAccount.id}]]</td>
+                  <td>[[${bankAccount.bank.name}]]</td>
+                  <td>[[${bankAccount.ibanNo}]]</td>
+                  <td>[[${bankAccount.customerNumber}]] </td>
+                  <td>
+                    <a class="btn btn-sm btn-white text-success mr-2" th:href="@{'/bank-account/edit/' + ${bankAccount.id}}"><i class="far fa-edit mr-1"></i>Düzenle</a>
+                    <a href="javascript:void(0);" th:href="@{'/bank-account/delete/' + ${bankAccount.id}}" class="btn btn-sm btn-white text-danger mr-2"><i class="far fa-trash-alt mr-1"></i>Sil</a>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
